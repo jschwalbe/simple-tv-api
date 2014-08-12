@@ -55,13 +55,13 @@ def generateFilename_Menu(episodes, show):
 	for val,episode in enumerate(episodes):
 		if episode['season'] == 0: 		# Does not have Series/Episode Numbers (probably a movie)
 			if show['name'] != episode['title']:
-				episode['filename'] = show['name'] + " - " + episode['title'].encode('utf-8')
+				episode['filename'] = show['name'] + " - " + episode['title'] + "[" + episode['channel'] + "]".encode('utf-8')
 			else:
-				episode['filename'] = show['name']
+				episode['filename'] = show['name'] + "[" + episode['channel'] + "]"
 		else:								# Display Season & Episode Numbers
 			episode['season'] = str(episode['season']).zfill(2) 		# Pad with leading 0 if < 10
 			episode['episode'] = str(episode['episode']).zfill(2)		# Pad with leading 0 if < 10
-			episode['filename'] = show['name'] + " - S" + str(episode['season']) + "E" + str(episode['episode']) + " - " + episode['title'].encode('utf-8')
+			episode['filename'] = show['name'] + " - S" + str(episode['season']) + "E" + str(episode['episode']) + " - " + episode['title'] + "[" + episode['channel'] + "]".encode('utf-8')
 		print str(val) + ": " + episode['filename'].encode('utf-8')		# Print episode menu	
 	return episodes
 
